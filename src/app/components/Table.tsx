@@ -1,8 +1,20 @@
 import React from 'react'
 
-const Table = () => {
+const Table = ({columns,rederRow,data}:{ columns: { header: string; accessor: string; className?: string }[];
+  rederRow: (item: any) => React.ReactNode;
+  data: any[];
+}) => {
   return (
-    <div>Table</div>
+    <table className="w-full mt-4">
+      <thead>
+        <tr className="text-left text-gray-500 text-sm">
+          {columns.map((col) => (
+            <th key={col.accessor} className={col.className}>{col.header}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>{data.map((item) => rederRow(item))}</tbody>
+    </table>
   )
 }
 
