@@ -1,22 +1,24 @@
 "use client";
+
 import Pagination from "@/app/components/Pagination";
 import Table from "@/app/components/Table";
 import TableS from "@/app/components/TableS";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { role, teachersData } from "../../../../../data";
+import { role, studentsData } from "../../../../../data";
 import FormModal from "@/app/components/FormModal";
 
-type Teacher = {
+
+type Student = {
   id: number;
-  teacherId: string;
+  studentId: string;
   name: string;
   email?: string;
   photo: string;
-  phone: string;
-  subjects: string[];
-  classes: string[];
+  phone?: string;
+  grade: number;
+  class: string;
   address: string;
 };
 
@@ -26,18 +28,13 @@ const columns = [
     accessor: "info",
   },
   {
-    header: "Teacher ID",
-    accessor: "teacherId",
+    header: "Student ID",
+    accessor: "studentId",
     className: "hidden md:table-cell",
   },
   {
-    header: "Subjects",
-    accessor: "subjects",
-    className: "hidden md:table-cell",
-  },
-  {
-    header: "Classes",
-    accessor: "classes",
+    header: "Grade",
+    accessor: "grade",
     className: "hidden md:table-cell",
   },
   {
@@ -55,23 +52,25 @@ const columns = [
     accessor: "action",
   },
 ];
-const TeacherList = () => {
-  const [role, setRole] = useState<string | null>(null);
+const StudentsList = () => {
 
-  useEffect(() => {
-    // This runs only on client side
-    const storedValue = localStorage.getItem("rotel");
-    setRole(storedValue);
-  }, []);
+   const [role, setRole] = useState<string | null>(null);
+  
+    useEffect(() => {
+      // This runs only on client side
+      const storedValue = localStorage.getItem("rotel");
+      setRole(storedValue);
+    }, []);
+  
 
-  const rederRow = (item: Teacher) => (
+  const rederRow=(item: Student) => (
     <tr
       key={item.id}
-      className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-lamaPurpleLight"
+      className="border-b border-gray-200 even:bg-slate-50 text-sm hover:bg-[var(--pm-o)]"
     >
       <td className="flex items-center gap-4 p-4">
         <Image
-          src={item.photo}
+          src={item?.photo}
           alt=""
           width={40}
           height={40}
@@ -79,32 +78,31 @@ const TeacherList = () => {
         />
         <div className="flex flex-col">
           <h3 className="font-semibold">{item.name}</h3>
-          <p className="text-xs text-gray-500">{item?.email}</p>
+          <p className="text-xs text-gray-500">{item?.class}</p>
         </div>
       </td>
-      <td className="hidden md:table-cell">{item.teacherId}</td>
-      <td className="hidden md:table-cell">{item.subjects.join(",")}</td>
-      <td className="hidden md:table-cell">{item.classes.join(",")}</td>
+      <td className="hidden md:table-cell">{item.studentId}</td>
+      <td className="hidden md:table-cell">{item.grade}</td>
       <td className="hidden md:table-cell">{item.phone}</td>
       <td className="hidden md:table-cell">{item.address}</td>
       <td>
         <div className="flex items-center gap-2">
-          <Link href={`/list/teachers/${item.id}`}>
-            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-lamaSky">
+          <Link href={`/list/students/${item.id}`}>
+            <button className="w-7 h-7 flex items-center justify-center rounded-full bg-[var(--pm-ss)]">
               <Image src="/view.png" alt="" width={16} height={16} />
             </button>
           </Link>
           {role === "admin" && (
-            <FormModal table="teacher" type="delete" id={item.id} />
+           
+            <FormModal table="student" type="delete" id={item.id}/>
           )}
         </div>
       </td>
-    </tr>
-  );
+    </tr>)
   return (
     <div className="bg-white p-4 rounded-md flex-1 mt-0 m-4">
       <div className="flex items-center justify-between">
-        <h1 className="hidden md:block text-lg font-semibold">All Teachers</h1>
+        <h1 className="hidden md:block text-lg font-semibold">All Students</h1>
         <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
           <TableS />
           <div className="flex items-center gap-4 self-end">
@@ -114,12 +112,12 @@ const TeacherList = () => {
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-[var(--pm-o)]">
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
-            {role === "admin" && <FormModal table="teacher" type="create" />}
+           {role=="admin"&&  <FormModal table="student" type="create" />}
           </div>
         </div>
       </div>
       <div className="">
-        <Table columns={columns} data={teachersData} rederRow={rederRow} />
+        <Table columns={columns} data={studentsData} rederRow={rederRow}/>
       </div>
       <div className="">
         <Pagination />
@@ -128,4 +126,4 @@ const TeacherList = () => {
   );
 };
 
-export default TeacherList;
+export default StudentsList;

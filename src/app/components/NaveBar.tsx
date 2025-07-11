@@ -18,7 +18,7 @@ const NaveBar = () => {
         </div>
         <div className="bg-white rounderd-full w-7 h-7 flex items-center justify-center cursor-pointer relative">
           <Image src={"/announcement.png"} alt="" width={20} height={20} />
-          <span className="absolute -top-3 -right-3 w-5 h-5 flex items-center justify-center bg-purple-500 text-white rounded-full text-[10px]">
+          <span className="absolute -top-3 -right-3 w-5 h-5 flex items-center justify-center bg-amber-500 text-white rounded-full text-[10px]">
             1
           </span>
         </div>
@@ -29,7 +29,7 @@ const NaveBar = () => {
         </div>
 
         <Image
-          src="/avatar.png"
+          src="/profile.png"
           alt=""
           width={36}
           height={36}
