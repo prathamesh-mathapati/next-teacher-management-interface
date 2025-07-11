@@ -9,7 +9,7 @@ Follow these steps to run the project locally:
 1. **Clone the repository**
    git clone <repository-link>
 
-2.**Move into the project directory**
+2. **Move into the project directory**
 cd next-teacher-management-interface
 
 3. **Install the dependencies**
