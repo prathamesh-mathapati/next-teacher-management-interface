@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { assignmentsData, role } from "../../../../../data";
+import { assignmentsData } from "../../../../../data";
 import TableS from "@/app/components/TableS";
 import Table from "@/app/components/Table";
 import Pagination from "@/app/components/Pagination";

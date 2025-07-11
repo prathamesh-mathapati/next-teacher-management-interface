@@ -5,7 +5,7 @@ import TableS from "@/app/components/TableS";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { role, teachersData } from "../../../../../data";
+import { teachersData } from "../../../../../data";
 import FormModal from "@/app/components/FormModal";
 
 type Teacher = {

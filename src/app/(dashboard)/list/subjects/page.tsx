@@ -6,7 +6,7 @@ import TableS from "@/app/components/TableS";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { role, studentsData, subjectsData } from "../../../../../data";
+import {  subjectsData } from "../../../../../data";
 import FormModal from "@/app/components/FormModal";
 
 

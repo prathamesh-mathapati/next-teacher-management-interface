@@ -2,7 +2,6 @@ import BigCalender from "@/app/components/BigCalender";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { role } from "../../../../../../data";
 import Announcements from "@/app/components/Announcements";
 import Perfoermance from "@/app/components/Perfoermance";
 

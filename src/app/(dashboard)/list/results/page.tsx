@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { resultsData, role } from "../../../../../data";
+import { resultsData } from "../../../../../data";
 import TableS from "@/app/components/TableS";
 import Table from "@/app/components/Table";
 import Pagination from "@/app/components/Pagination";

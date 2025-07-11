@@ -98,7 +98,7 @@ const Menu = () => {
             {i.title}
           </span>
           {i.items.map((item) => {
-            if (item.visible.includes(role)) {
+            if (role && item.visible.includes(role)) {
               if (item?.label == "Logout") {
                 return  <button
                     key={item.label}
