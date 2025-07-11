@@ -10,13 +10,16 @@ Follow these steps to run the project locally:
 
    ```bash
    git clone <repository-link>
-**2.Move into the project directory
+
+2.**Move into the project directory**
+  ```bash
 cd next-teacher-management-interface
-**3. Install the dependencies
-**
+3. **Install the dependencies**
+  ```bash
 npm install
-**4. Run the development server
-**npm run dev
+4. **Run the development server**
+  ```bash
+npm run dev
 5. open your browser and visit
 
 http://localhost:3000
